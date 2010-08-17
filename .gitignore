@@ -1,0 +1,12 @@
+.DS_Store
+db/*.sqlite3
+doc/*
+log/*
+tmp/*
+coverage/*
+public/assets/*
+public/assets/admin/*
+public/cache/*
+public/**/*.html
+public/system/*
+.rvmrc

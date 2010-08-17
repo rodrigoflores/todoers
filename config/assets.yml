@@ -1,0 +1,10 @@
+embed_images: datauri
+
+javascripts:
+  base:
+    - public/javascripts/rails.js
+    - public/javascripts/application.js
+
+stylesheets:
+  base:
+    - public/stylesheets/application.css
