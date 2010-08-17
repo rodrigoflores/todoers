@@ -1,5 +1,9 @@
 %h2 Sign in
+
 = form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
+  %p 
+    = flash[:notice]
+    = flash[:alert]
   %p
     = f.label :email
     %br/
