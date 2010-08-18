@@ -1,107 +1,73 @@
 body {
-  background-color: #4B7399;
+  background-color: #4b7399;
   font-family: Verdana, Helvetica, Arial;
-  font-size: 14px;
-}
-
-a img {
-  border: none;
-}
+  font-size: 14px; }
 
 a {
-  color: #0000FF;
-}
+  color: blue; }
+  a img {
+    border: none; }
 
-.title {
-	width: 50%;
-}
-
-.title a:visited,
-.title a:hover,
-.title a:link,
-.title a:active {
-	color: black;
-}
-
-/*.title a:hover {
-	color: black;
-}*/
+.logo {
+  width: 50%; }
+  .logo a:visited, .logo a:hover, .logo a:link, .logo a:active {
+    color: black; }
 
 #header_table {
-	width: 100%;
-}
+  width: 100%; }
 
 #user_menu {
-	text-align: right;
-}
+  text-align: right; }
 
 .user_menu {
-	width: 50%;
-	text-align: right;
-}
+  width: 50%;
+  text-align: right; }
 
 .clear {
   clear: both;
   height: 0;
-  overflow: hidden;
-}
+  overflow: hidden; }
 
 #container {
   width: 75%;
   margin: 0 auto;
-  background-color: #FFF;
+  background-color: white;
   padding: 20px 40px;
   border: solid 1px black;
-  margin-top: 20px;
-}
+  margin-top: 20px; }
 
-#content {
-	width: 90%;	
-	margin-left: 5%;
-}
 #flash_notice, #flash_error, #flash_alert {
   padding: 5px 8px;
-  margin: 10px 0;
-}
+  margin: 10px 0; }
 
 #flash_notice {
-  background-color: #CFC;
-  border: solid 1px #6C6;
-}
+  background-color: #ccffcc;
+  border: solid 1px #66cc66; }
 
 #flash_error, #flash_alert {
-  background-color: #FCC;
-  border: solid 1px #C66;
-}
+  background-color: #ffcccc;
+  border: solid 1px #cc6666; }
 
 .fieldWithErrors {
-  display: inline;
-}
+  display: inline; }
 
 .error_messages {
   width: 400px;
-  border: 2px solid #CF0000;
+  border: 2px solid #cf0000;
   padding: 0px;
   padding-bottom: 12px;
   margin-bottom: 20px;
   background-color: #f0f0f0;
-  font-size: 12px;
-}
-
-.error_messages h2 {
-  text-align: left;
-  font-weight: bold;
-  padding: 5px 10px;
-  font-size: 12px;
-  margin: 0;
-  background-color: #c00;
-  color: #fff;
-}
-
-.error_messages p {
-  margin: 8px 10px;
-}
-
-.error_messages ul {
-  margin: 0;
-}
+  font-size: 12px; }
+  .error_messages h2 {
+    text-align: left;
+    font-weight: bold;
+    padding: 5px 10px;
+    font-size: 12px;
+    margin: 0;
+    background-color: #cc0000;
+    color: white; }
+  .error_messages p {
+    margin: 8px 10px; }
+  .error_messages ul {
+    margin: 0; }
