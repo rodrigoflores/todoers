@@ -12,6 +12,34 @@ a {
   color: #0000FF;
 }
 
+.title {
+	width: 50%;
+}
+
+.title a:visited,
+.title a:hover,
+.title a:link,
+.title a:active {
+	color: black;
+}
+
+/*.title a:hover {
+	color: black;
+}*/
+
+#header_table {
+	width: 100%;
+}
+
+#user_menu {
+	text-align: right;
+}
+
+.user_menu {
+	width: 50%;
+	text-align: right;
+}
+
 .clear {
   clear: both;
   height: 0;
@@ -27,6 +55,10 @@ a {
   margin-top: 20px;
 }
 
+#content {
+	width: 90%;	
+	margin-left: 5%;
+}
 #flash_notice, #flash_error, #flash_alert {
   padding: 5px 8px;
   margin: 10px 0;

@@ -8,14 +8,24 @@
     = yield(:head) 
   %body
     #container
-      - if current_user 
-        %strong Logged in as:
-        = current_user.email
-        %br/
-        = link_to "Log out", destroy_user_session_path 
-      - else 
-        = link_to "Sign in", new_user_session_path 
-        = link_to "Sign up", new_user_registration_path 
+      .header
+        %table{ :id => 'header_table'}
+          %tbody
+            %tr
+              %td
+                .title
+                  - link_to root_path do
+                    %h1 Todoers            
+              %td{ :id => 'user_menu'}
+                - if current_user 
+                  %strong Logged in as:
+                  = current_user.email
+                  
+                  = link_to destroy_user_session_path do
+                    Log out 
+                - else 
+                  = link_to "Sign in", new_user_session_path 
+                  = link_to "Sign up", new_user_registration_path 
 
       
       - flash.each do |name, msg| 
