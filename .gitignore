@@ -11,3 +11,4 @@ public/**/*.html
 public/system/*
 .rvmrc
 ruby/*
+public/uploads/*
