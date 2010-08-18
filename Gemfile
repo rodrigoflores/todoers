@@ -10,11 +10,9 @@ gem "inherited_resources", ">=1.1.2"
 gem "will_paginate", ">=3.0.pre"
 gem "devise", ">=1.1.rc2"
 gem "simple_form"
-gem 'carrierwave-rails3'
-
 gem "inploy"
 gem "jammit"
-
+gem 'carrierwave-rails3', :require => 'carrierwave'
 gem "rails3-generators", :git => "git://github.com/indirect/rails3-generators.git"
 
 gem "rspec", ">=2.0.0.beta.19"

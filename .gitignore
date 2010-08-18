@@ -10,3 +10,4 @@ public/cache/*
 public/**/*.html
 public/system/*
 .rvmrc
+ruby/*
