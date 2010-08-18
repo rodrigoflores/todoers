@@ -92,6 +92,7 @@ GEM
       mime-types
       treetop (>= 1.4.5)
     mime-types (1.16)
+    nifty-generators (0.4.0)
     nokogiri (1.4.3.1)
     polyglot (0.3.1)
     rack (1.2.1)
@@ -174,6 +175,7 @@ DEPENDENCIES
   inherited_resources (>= 1.1.2)
   inploy
   jammit
+  nifty-generators
   rails (= 3.0.0.rc)
   rails3-generators!
   remarkable (>= 4.0.0.alpha4)

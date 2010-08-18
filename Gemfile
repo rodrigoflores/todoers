@@ -14,6 +14,8 @@ gem "inploy"
 gem "jammit"
 gem 'carrierwave-rails3', :require => 'carrierwave'
 gem "rails3-generators", :git => "git://github.com/indirect/rails3-generators.git"
+gem "nifty-generators"
+
 
 gem "rspec", ">=2.0.0.beta.19"
 gem "remarkable", ">=4.0.0.alpha4"

@@ -1,12 +1,12 @@
 require File.dirname(__FILE__) + '/acceptance_helper'
 
 def log_out
-  visit '/'
-  click_link "Sign out"
+  visit homepage
+  click_link "Log out"
 end
 
 def log_in(user,password)
-  visit '/'
+  visit homepage
   click_link "Sign in"
   fill_in "user_email", :with => user.email
   fill_in "user_password", :with => password
@@ -23,7 +23,7 @@ feature "Create a user", %q{
 } do
 
   scenario "Scenario name" do
-    visit '/'
+    visit homepage
     page.should have_content("Sign up")
     click_link "Sign up"
     fill_in "user_email", :with => "john@doe.com"
@@ -41,7 +41,7 @@ feature "Do not create a user with a wrong confirmation", %q{
 } do
 
   scenario "Scenario name" do
-    visit '/'
+    visit homepage
     page.should have_content("Sign up")
     click_link "Sign up"
     fill_in "user_email", :with => "john@doe.com"
@@ -65,7 +65,7 @@ feature "Log in", %q{
 
   scenario "Scenario name" do
     log_in(@user, "mypassword")
-    page.should have_content("Signed in successfully")
+    page.should have_content(@user.email)
     log_out
   end
 end
@@ -117,7 +117,7 @@ feature "Forgot password", %q{
     page.should have_content("Your password was changed successfully")
     log_out
     log_in(@user,'kalala')
-    page.should have_content("Signed in successfully")
+    page.should have_content(@user.email)
   end
 end
 
