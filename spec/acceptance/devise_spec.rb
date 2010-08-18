@@ -115,6 +115,9 @@ feature "Forgot password", %q{
     fill_in "user_password_confirmation", :with => 'kalala'
     click_button "user_submit"
     page.should have_content("Your password was changed successfully")
+    log_out
+    log_in(@user,'kalala')
+    page.should have_content("Signed in successfully")
   end
 end
 
