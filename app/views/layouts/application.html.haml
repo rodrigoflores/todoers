@@ -11,7 +11,6 @@
       - if current_user 
         %strong Logged in as:
         = current_user.email
-        = image_tag current_user.photo.url
         %br/
         = link_to "Log out", destroy_user_session_path 
       - else 

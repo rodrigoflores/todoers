@@ -12,3 +12,4 @@ public/system/*
 .rvmrc
 ruby/*
 public/uploads/*
+capybara-*

@@ -14,7 +14,23 @@ def log_in(user,password)
 end
 
 
-
+feature "Non photo upload", %q{
+  In order to create an account
+  As a dumb
+  I want to add a file that is not a photo
+} do
+  scenario "non-photo upload" do
+    visit homepage
+    click_link "Sign up"
+    fill_in "user_email", :with => "john@doe.com"
+    fill_in "user_password", :with => "mypassword"
+    fill_in "user_password_confirmation", :with => "mypassword"
+    attach_file('user_photo', 'config.ru')
+    click_button 'user_submit'
+    page.should have_content("Photo is not an allowed type of file.")
+    save_and_open_page
+  end
+end
 
 feature "Create a user", %q{
   In order to use the app
@@ -22,13 +38,15 @@ feature "Create a user", %q{
   I want to create my user
 } do
 
-  scenario "Scenario name" do
+  scenario "User creation" do
     visit homepage
     page.should have_content("Sign up")
     click_link "Sign up"
+    fill_in "user_name", :with => "John Doe"
     fill_in "user_email", :with => "john@doe.com"
     fill_in "user_password", :with => "mypassword"
     fill_in "user_password_confirmation", :with => "mypassword"
+    attach_file('user_photo', 'public/images/rails.png')
     click_button("Sign up")
     page.should have_content("You have signed up successfully")
   end
