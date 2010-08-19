@@ -7,7 +7,6 @@ describe TodoList do
   
   describe 'associations' do
     should_belong_to :user
-    
   end
   
   
