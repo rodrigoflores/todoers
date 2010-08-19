@@ -29,5 +29,7 @@ class User < ActiveRecord::Base
          
   attr_accessible :email, :password, :password_confirmation, :remember_me, :photo, :remote_photo_url, :photo_cache, :remove_photo, :name
   validates_presence_of :name
+  
+  has_many :todo_lists
 
 end
