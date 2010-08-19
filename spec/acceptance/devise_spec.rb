@@ -1,18 +1,5 @@
 require File.dirname(__FILE__) + '/acceptance_helper'
 
-def log_out
-  visit homepage
-  click_link "Log out"
-end
-
-def log_in(user,password)
-  visit homepage
-  click_link "Sign in"
-  fill_in "user_email", :with => user.email
-  fill_in "user_password", :with => password
-  click_button "user_submit"
-end
-
 
 feature "Non photo upload", %q{
   In order to create an account
@@ -28,7 +15,6 @@ feature "Non photo upload", %q{
     attach_file('user_photo', 'config.ru')
     click_button 'user_submit'
     page.should have_content("Photo is not an allowed type of file.")
-    save_and_open_page
   end
 end
 
@@ -49,6 +35,7 @@ feature "Create a user", %q{
     attach_file('user_photo', 'public/images/rails.png')
     click_button("Sign up")
     page.should have_content("You have signed up successfully")
+    log_out
   end
 end
 
@@ -136,6 +123,7 @@ feature "Forgot password", %q{
     log_out
     log_in(@user,'kalala')
     page.should have_content(@user.email)
+    log_out
   end
 end
 

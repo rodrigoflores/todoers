@@ -28,7 +28,12 @@ describe User do
     @user = Factory(:user)
     @user.photo.should be_kind_of(PhotoUploader)
   end
+  describe 'validations' do 
+    should_validate_presence_of(:name)
+  end
   
-  should_validate_presence_of(:name)
+  describe 'associations' do
+    should_have_many :todo_lists
+  end
   
 end
