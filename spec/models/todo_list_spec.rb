@@ -9,5 +9,41 @@ describe TodoList do
     should_belong_to :user
   end
   
+  describe 'reachable?' do
+    before do
+      @alice = Factory(:user)
+      @bob = Factory(:user, :email => 'bob@bob.com')
+      @public_list = Factory(:todo_list, :public => true, :user => @alice)  
+      @private_list = Factory(:todo_list, :public => false, :user => @alice)  
+      
+    end
+    
+    describe 'public list' do
+
+      
+      it 'should be reachable, if the owner is the user' do
+        @public_list.should be_reachable(@alice)
+      end
+      
+      it 'should be reachable, if the owner is not the user' do
+        @public_list.should be_reachable(@bob)
+      end
+      
+    end
+    
+    describe 'private list' do
+
+      
+      it 'should be reachable, if the owner is the user' do
+        @private_list.should be_reachable(@alice)
+      end
+      
+      it 'should not be reachable, if the owner is not the user' do
+        @private_list.should_not be_reachable(@bob)
+      end
+      
+    end
+  end
+  
   
 end

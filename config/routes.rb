@@ -2,6 +2,10 @@ AppName::Application.routes.draw do
   get "pages/index"
 
   devise_for :users
+  
+  resources :users, :only => :show do
+    resources :todo_lists, :controller => 'users/todo_lists'
+  end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

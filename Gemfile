@@ -15,6 +15,7 @@ gem "jammit"
 gem 'carrierwave-rails3', :require => 'carrierwave'
 gem "rails3-generators", :git => "git://github.com/indirect/rails3-generators.git"
 gem "nifty-generators"
+gem "friendly_id", "~> 3.1"
 
 
 gem "rspec", ">=2.0.0.beta.19"
