@@ -5,4 +5,6 @@ class TodoList < ActiveRecord::Base
   def reachable?(user)
     user == self.user || self.public?
   end
+  
+  scope :public,  where( :public => true)
 end

@@ -16,7 +16,7 @@ class Users::TodoListsController < ApplicationController
   
   protected
     def collection
-      @todo_lists = parent.todo_lists.where(:public => true)
+      @todo_lists = parent.todo_lists.public
       #Criar Named Scope ?
     end
 end
