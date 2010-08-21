@@ -3,7 +3,6 @@ class Users::TodoListsController < ApplicationController
   actions :index, :show
   belongs_to :user
   
-  
   def show
     show! do |format|
       format.html do 
