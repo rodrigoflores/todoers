@@ -2,4 +2,4 @@
 
 %ul 
   - @todo_lists.each do |list|
-    %li= list.name
+    %li= link_to list.name, user_todo_list_path(@user, list)
