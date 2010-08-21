@@ -33,19 +33,7 @@ describe Users::TodoListsController do
       after do
         sign_out @user
       end
-      
-      describe 'get new' do
-        it 'should render new' do
-          get :new, :user_id => @user.id
-          should render_template 'new'
-        end
-        
-        it "should assign @todo_list and it should belongs to the owner" do
-          get :new, :user_id => @user.id
-          assigns[:todo_list].should be_kind_of(TodoList)
-          assigns[:todo_list].user.should == @user
-        end
-      end
+
       
       describe 'get edit' do
         
@@ -70,18 +58,6 @@ describe Users::TodoListsController do
     describe 'not owner' do
       before do
         sign_in @another_user
-      end
-      
-      describe 'get new' do
-        it 'should redirect the user' do
-          get :new, :user_id => @user.id
-          should redirect_to root_path
-        end
-        
-        it 'should flash something' do
-          get :new, :user_id => @user.id
-          flash[:alert].should_not be_blank
-        end
       end
       
       describe 'public list' do

@@ -1,19 +1,7 @@
 class Users::TodoListsController < ApplicationController
   inherit_resources
-  actions :index, :show, :new
+  actions :index, :show
   belongs_to :user
-  
-  def new
-    new! do |format|
-      format.html do 
-        unless resource.user == current_user
-          flash[:alert] = "You are not allowed to create a list as this uer"
-          redirect_to root_path
-        end
-      end
-    end
-  end
-  
   
   
   def show
@@ -30,6 +18,5 @@ class Users::TodoListsController < ApplicationController
   protected
     def collection
       @todo_lists = parent.todo_lists.public
-      #Criar Named Scope ?
     end
 end

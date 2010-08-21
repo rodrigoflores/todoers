@@ -3,7 +3,7 @@ class CreateTodoLists < ActiveRecord::Migration
     create_table :todo_lists do |t|
       t.string :name
       t.text :description
-      t.datetime :deadline
+      t.date :deadline
       t.integer :user_id
       t.boolean :public, :default => false
       t.timestamps
