@@ -34,5 +34,11 @@ feature "viewing my todo-lists", %q{
     log_out
   end
   
+  scenario "create a new to-do list" do
+    click_link("My page")
+    click_link("My to-do lists")
+    click_link("New to-do list")
+  end
+  
 
 end
