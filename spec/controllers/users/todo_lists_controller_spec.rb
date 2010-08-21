@@ -17,38 +17,69 @@ end
 describe Users::TodoListsController do
   before do
     @user = Factory(:user)
+    @another_user = Factory(:user, :email => 'rick@astley.com')
     @public_list = Factory(:todo_list, :public => true, :user => @user)
     @private_list = Factory(:todo_list, :public => false, :user => @user)
   end
   
   describe 'authenticated' do
-    before do
-      sign_in @user
-    end
+
     
     describe 'owner' do
-      describe 'public list' do
-        describe 'get show' do
+      before do
+        sign_in @user
+      end
+      
+      after do
+        sign_out @user
+      end
+      
+      describe 'get show' do
+        describe 'public list' do
           let(:list) { @public_list }
           let(:user) { @user }
           it_should_behave_like 'showing a list with an access granted'
         end
-      end
-      
-      describe 'private list' do
-        describe 'get show' do
+        
+        describe 'private list' do        
           let(:list) { @private_list }
           let(:user) { @user }
-
           it_should_behave_like 'showing a list with an access granted'
         end
+        
       end
     end
     
     describe 'not owner' do
+      before do
+        sign_in @another_user
+      end
       
-    end
+      describe 'public list' do
+        let(:list) { @public_list }        
+        let(:user) { @user }
+        it_should_behave_like 'showing a list with an access granted'
+      end
       
+      describe 'private list' do
+        before(:each) do
+          get :show, :user_id => @user.id, :id => @private_list.id          
+        end
+        
+        it 'should redirect the user' do
+          should redirect_to root_path
+        end
+        
+        it 'should flash something' do
+          flash[:alert].should_not be_blank
+        end
+
+      end
+      
+      after do
+        sign_out @another_user
+      end
+    end      
   end
   
   
@@ -95,5 +126,4 @@ describe Users::TodoListsController do
       end
     end
   end
-
 end

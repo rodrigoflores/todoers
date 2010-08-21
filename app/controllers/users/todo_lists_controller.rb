@@ -3,6 +3,11 @@ class Users::TodoListsController < ApplicationController
   actions :index, :show
   belongs_to :user
   
+  def new
+    @user = User.find(params[:user_id])
+
+  end
+  
   def show
     show! do |format|
       format.html do 
