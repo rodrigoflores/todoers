@@ -1,7 +1,8 @@
 
+%p
+  I have a home page here
 
-I have a home page here
-
-
-= link_to "To-do-lists", todo_lists_path
+- if current_user
+  %p
+    = link_to "My page", user_path(current_user) 
 
