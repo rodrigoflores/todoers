@@ -38,7 +38,27 @@ feature "viewing my todo-lists", %q{
     click_link("My page")
     click_link("My to-do lists")
     click_link("New to-do list")
+    log_out
+    pending "I do not have forms!"
   end
+  
+  scenario "edit a new to-do list" do
+    click_link("My page")
+    click_link("My to-do lists")
+    log_out
+    pending "I have to access an edit link inside a tr with id #{@list.name.gsub(" ","").downcase + "_" + @user.id.to_s}"
+  end
+  
+  
+  
+  scenario "delete a new to-do list" do
+    click_link("My page")
+    click_link("My to-do lists")
+    log_out
+    pending "I have to access a delete link inside a tr with id #{@list.name.gsub(" ","").downcase + "_" + @user.id.to_s}"
+  end
+  
+  
   
 
 end
