@@ -12,3 +12,4 @@
     %tr{ :id => list.name.gsub(" ","").downcase + "_" + @user.id.to_s   }
       %td= link_to list.name, user_todo_list_path(@user, list)
       %td= link_to 'Edit', edit_user_todo_list_path(@user,list)
+      %td= link_to 'Delete', edit_user_todo_list_path(@user,list)
