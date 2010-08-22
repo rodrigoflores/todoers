@@ -1,4 +1,12 @@
 
-%ul
+
+%table
+  %tr
+    %th
+      Name
   - @todo_lists.each do |list|
-    %li= link_to list.name, todo_list_path(list)
+    %tr 
+      %td= link_to list.name, todo_list_path(list)
+      %td= link_to "Edit", edit_todo_list_path(list)
+      %td= link_to "Delete", todo_list_path(list), :method => :delete
+      

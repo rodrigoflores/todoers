@@ -10,12 +10,21 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100819005330) do
+ActiveRecord::Schema.define(:version => 20100822000959) do
+
+  create_table "todo_items", :force => true do |t|
+    t.string   "description"
+    t.date     "deadline"
+    t.boolean  "done"
+    t.integer  "todo_list_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "todo_lists", :force => true do |t|
     t.string   "name"
     t.text     "description"
-    t.date     "deadline"
+    t.datetime "deadline"
     t.integer  "user_id"
     t.boolean  "public",      :default => false
     t.datetime "created_at"

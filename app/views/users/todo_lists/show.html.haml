@@ -1,8 +1,7 @@
 
 
 %h3
-  - link_to user_path(@todo_list.user) do
-    = @todo_list.user.name
+  = link_to @todo_list.user.name, user_path(@todo_list.user)
   = '/' + @todo_list.name
 
 

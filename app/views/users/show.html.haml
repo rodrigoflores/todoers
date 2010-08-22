@@ -14,15 +14,11 @@
   
 %h3 Public To-do-lists
 
-- if current_user == @user
-  %p
-    = link_to "Create list", new_user_todo_list_path(current_user)
-  %p 
-    = link_to "My to-do lists", user_todo_lists_path(current_user)
 
-  %ul
-    - @user.todo_lists.each do |todo_list|
-      %li= link_to todo_list.name, user_todo_list_path(@user,todo_list)
+
+%ul
+  - @user.todo_lists.each do |todo_list|
+    %li= link_to todo_list.name, user_todo_list_path(@user,todo_list)
   
 
 
