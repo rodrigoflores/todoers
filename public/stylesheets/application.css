@@ -13,6 +13,9 @@ a {
   .logo a:visited, .logo a:hover, .logo a:link, .logo a:active {
     color: black; }
 
+#todo_items table .inactive {
+  display: none; }
+
 #header_table {
   width: 100%; }
 

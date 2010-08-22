@@ -1,12 +1,19 @@
 require 'spec_helper'
 
 describe TodoList do
+  should_accept_nested_attributes_for :todo_items
+  
   describe 'validations' do
     should_validate_presence_of :name
   end
   
+  describe 'scopes' do
+    it { should have_scope(:public, :where => {:public => true})}
+  end
+  
   describe 'associations' do
     should_belong_to :user
+    should_have_many :todo_items
   end
   
   describe 'reachable?' do
