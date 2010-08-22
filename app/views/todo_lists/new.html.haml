@@ -13,7 +13,7 @@
           %td Deadline: 
           %td= form_nested.input :deadline, :as => :string, :label => false, :input_html => { :size => 10 }
           %td= form_nested.input :done
-          %td= link_to "X", "#", :id => "close_this_todo_item"
+          %td= link_to "X", "#", :class => "close_this_todo_item"
       = link_to "New to do item", "#", :id => "new_to_do_link"
   
   = f.button :submit
