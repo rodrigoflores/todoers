@@ -1,0 +1,8 @@
+
+
+= simple_form_for @todo_list, :url => todo_list_path(@todo_list), :html => { :method => :put } do |f| 
+  = f.input :name 
+  = f.input :description
+  = f.input :deadline  
+  = f.button :submit
+

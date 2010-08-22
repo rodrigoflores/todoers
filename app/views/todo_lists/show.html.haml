@@ -1,2 +1,21 @@
 
 %h2{:id => 'todo_list_title'}= @todo_list.name
+
+
+
+%table
+  %tr
+    %th
+      Description
+    %th
+      Deadline
+    %th
+      Status
+  - @todo_list.todo_items.each do |item|
+    %tr
+      %td= item.description 
+      %td= item.deadline
+      %td= item.done? ? "Yes" : "No"
+      %td= link_to "Complete"
+      %td= link_to "Delete"
+      
