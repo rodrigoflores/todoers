@@ -20,6 +20,67 @@ var Application = {
         return false;
       });
     }
+  },
+  submit_todo_item: {
+    submit: function() {
+      $("#new_todo_item_form").submit( function (){
+        var form = $(this);        
+        $.ajax({
+          url: form.attr('action'),
+          type: 'post',
+          dataType: 'json',
+          data: form.serialize(),
+          success: function(response) {
+            var json = jQuery.parseJSON(response.responseText);
+            alert(json.todo_item.id);
+          },
+          error: function(response) {
+            alert("Erro");
+          }
+            
+          });
+        return false;
+      });
+      
+    }
+  },
+  complete_todo_item: {
+    complete: function() {
+      $(".complete_todo_item").click( function ( ){
+        link = $(this);
+        $.ajax({
+            type: 'PUT',
+            url: link.attr('href'),
+            dataType: 'script',
+            success: function(msg){
+              tr = link.parent().parent();
+              status_cell = tr.find('.status');
+              status_cell.html("Yes");                                          
+              link_cell = tr.find('.complete_link');
+              link_cell.html("");
+            }
+        });
+        return false;
+      });
+    }
+  },
+  destroy_todo_item: {
+    destroy: function() {
+      $(".destroy_todo_item").click( function ( ){
+        link = $(this);
+        tr = link.parent().parent();
+        $.ajax({
+            type: 'DELETE',
+            url: link.attr('href'),
+            dataType: 'script',
+            success: function(msg){
+              
+              link.parent().parent().fadeOut();
+            }
+        });
+        return false;
+      });
+    }
   }
 };
 
@@ -28,5 +89,8 @@ var Application = {
 $(document).ready(function() {
   Application.add_to_do_item.init();
   Application.remove_to_do_item.init();
+  Application.destroy_todo_item.destroy();
+  Application.complete_todo_item.complete();
+  Application.submit_todo_item.submit();
 });
 

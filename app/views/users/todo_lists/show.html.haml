@@ -3,6 +3,23 @@
 %h3
   = link_to @todo_list.user.name, user_path(@todo_list.user)
   = '/' + @todo_list.name
+  
+
+
+%table
+  %tr
+    %th
+      Description
+    %th
+      Deadline
+    %th
+      Status
+  - @todo_list.todo_items.each do |item|
+    %tr
+      %td= item.description 
+      %td= item.deadline
+      %td= item.done? ? "Yes" : "No"
+        
 
 
 

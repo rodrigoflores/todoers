@@ -60,6 +60,9 @@ AppName::Application.routes.draw do
   root :to => 'pages#index'
   
   resources :todo_lists do
+    resources :todo_items, :controller => 'todo_lists/todo_items' do
+      put :complete, :on => :member
+    end
   end
 
   # See how all your routes lay out with "rake routes"
