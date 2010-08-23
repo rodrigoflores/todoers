@@ -2,8 +2,14 @@
 %h2{:id => 'todo_list_title'}= @todo_list.name
 
 
+- simple_form_for :todo_item, :url => todo_list_todo_items_path(@todo_list), :html => { :id => "new_todo_item_form"} do |form|
+  = form.input :description, :required => false
+  = form.input :deadline, :required => false
+  = form.input :done, :required => false
+  = form.submit
+  
 
-%table
+%table#todo_items
   %tr
     %th
       Description

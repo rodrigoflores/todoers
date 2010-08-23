@@ -21,6 +21,29 @@ var Application = {
       });
     }
   },
+  submit_todo_item: {
+    submit: function() {
+      $("#new_todo_item_form").submit( function (){
+        var form = $(this);        
+        $.ajax({
+          url: form.attr('action'),
+          type: 'post',
+          dataType: 'json',
+          data: form.serialize(),
+          success: function(response) {
+            var json = jQuery.parseJSON(response.responseText);
+            alert(json.todo_item.id);
+          },
+          error: function(response) {
+            alert("Erro");
+          }
+            
+          });
+        return false;
+      });
+      
+    }
+  },
   complete_todo_item: {
     complete: function() {
       $(".complete_todo_item").click( function ( ){
@@ -68,5 +91,6 @@ $(document).ready(function() {
   Application.remove_to_do_item.init();
   Application.destroy_todo_item.destroy();
   Application.complete_todo_item.complete();
+  Application.submit_todo_item.submit();
 });
 
