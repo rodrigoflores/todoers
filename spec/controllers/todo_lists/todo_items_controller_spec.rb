@@ -45,16 +45,36 @@ describe TodoLists::TodoItemsController do
     end
     
     describe 'post create' do
+      def post_it(attributes) 
+        post :create, :todo_list_id => @todo_list.id, :todo_item => attributes, :format => 'json'
+      end
+      
       describe 'successful' do
-        it 'should create a new todo_item'
+
         
-        it 'should return a json with the data'
+        it 'should create a new todo_item' do
+          lambda {
+            post_it(Factory.attributes_for(:todo_item, :description => 'abcd'))
+          }.should change(@todo_list.todo_items, :count).by(1)
+        end
+         
+        it 'should return a nothing' do
+          response.body.should == ""
+        end
       end
       
       describe 'failure' do
-        it 'should not create a new todo_item'
+
+        it 'should not create a new todo_item' do
+          lambda {
+            post_it(Factory.attributes_for(:todo_item, :description => ''))
+          }.should_not change(@todo_list.todo_items, :count)
+        end
       
-        it 'should return a json with the errors'
+        it 'should return a json with the errors' do
+          post_it(Factory.attributes_for(:todo_item, :description => ''))
+          response.body.should == "[{\"field\":\"description\",\"description\":\"can't be blank\"}]"
+        end
       end
       
 

@@ -1,13 +1,15 @@
 class TodoLists::TodoItemsController < InheritedResources::Base
-  respond_to :js
+  respond_to :js, :except => 'create'
   respond_to :json, :only => 'create'
   belongs_to :todo_list
   
   def create
     create! do |success, failure|
-      success.json { render :json => resource }
+      success.json do 
+        render :nothing => true 
+      end
       failure.json do |format|
-        render :json => [ resource.errors.map { |error| { :field => error.first, :description => error.last }} ] , :status => 406
+        render :json => resource.error_hash , :status => 406
       end
     end
   end

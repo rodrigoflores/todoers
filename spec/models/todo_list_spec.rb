@@ -14,6 +14,7 @@ describe TodoList do
   describe 'associations' do
     should_belong_to :user
     should_have_many :todo_items
+    it { should have_and_belong_to_many :users_watching, :join_table => "users_watched_lists", :foreign_key => "list_id", :class_name => "Users", :uniq => true}
   end
   
   describe 'reachable?' do

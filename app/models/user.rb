@@ -24,6 +24,8 @@ class User < ActiveRecord::Base
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+         
+  has_and_belongs_to_many :watched_list, :join_table => "users_watched_lists", :foreign_key => "user_id", :class_name => "TodoList", :uniq => true
   
   mount_uploader :photo, PhotoUploader
          
