@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100823105654) do
+ActiveRecord::Schema.define(:version => 20100823223826) do
 
   create_table "todo_items", :force => true do |t|
     t.string   "description"
@@ -55,6 +55,11 @@ ActiveRecord::Schema.define(:version => 20100823105654) do
   create_table "users_watched_lists", :id => false, :force => true do |t|
     t.integer "user_id"
     t.integer "list_id"
+  end
+
+  create_table "watching_list_users", :id => false, :force => true do |t|
+    t.integer "todo_list_id"
+    t.integer "user_id"
   end
 
 end

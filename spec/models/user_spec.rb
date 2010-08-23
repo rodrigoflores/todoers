@@ -33,6 +33,7 @@ describe User do
   end
   
   describe 'associations' do
+    it { should have_and_belong_to_many :watched_lists}
     should_have_many :todo_lists
   end
   
