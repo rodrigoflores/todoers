@@ -30,5 +30,6 @@ gem 'capybara'
 gem 'delorean'
 gem 'database_cleaner'
 
+gem 'mongrel'
 
 

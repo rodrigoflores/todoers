@@ -12,10 +12,13 @@
     %th
       Status
   - @todo_list.todo_items.each do |item|
-    %tr
+    %tr{ :id => "todo-item-#{item.id}"}
       %td= item.description 
       %td= item.deadline
-      %td= item.done? ? "Yes" : "No"
-      %td= link_to "Complete"
-      %td= link_to "Delete"
+      %td.status= item.done? ? "Yes" : "No"
+      - unless item.done?
+        %td.complete_link= link_to "Complete", complete_todo_list_todo_item_path(@todo_list, item), :class => 'complete_todo_item'
+      - else
+        %td.complete_link
+      %td= link_to "Delete", todo_list_todo_item_path(@todo_list, item), :class => 'destroy_todo_item'
       
