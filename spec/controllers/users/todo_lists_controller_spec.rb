@@ -34,11 +34,6 @@ describe Users::TodoListsController do
         sign_out @user
       end
 
-      
-      describe 'get edit' do
-        
-      end
-      
       describe 'get show' do
         describe 'public list' do
           let(:list) { @public_list }
@@ -64,6 +59,15 @@ describe Users::TodoListsController do
         let(:list) { @public_list }        
         let(:user) { @user }
         it_should_behave_like 'showing a list with an access granted'
+        
+        describe 'watch' do
+          it 'should add the list to the watch list' do
+            lambda { 
+              put :watch_todo_list, :user_id => @user.id, :id => @public_list.id
+            }.should change(@another_user.watched_lists, :count).by(1)
+            
+          end
+        end
       end
       
       describe 'private list' do

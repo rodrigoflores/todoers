@@ -1,10 +1,13 @@
 
 
+
 %h3
   = link_to @todo_list.user.name, user_path(@todo_list.user)
   = '/' + @todo_list.name
   
-
+- if current_user
+  %p= link_to "Watch this list", watch_todo_list_user_todo_list_path(@todo_list.user, @todo_list, :format => 'js')
+  
 
 %table
   %tr

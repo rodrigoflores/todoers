@@ -4,6 +4,7 @@
   = f.input :name 
   = f.input :description
   = f.input :deadline
+  = f.input :public
   #todo_items  
     %table
       - f.simple_fields_for :todo_items do |form_nested|

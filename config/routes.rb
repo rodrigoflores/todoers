@@ -4,7 +4,9 @@ AppName::Application.routes.draw do
   devise_for :users
   
   resources :users, :only => :show do
-    resources :todo_lists, :controller => 'users/todo_lists'
+    resources :todo_lists, :controller => 'users/todo_lists' do
+      get :watch_todo_list, :on => :member
+    end
   end
 
   # The priority is based upon order of creation:
@@ -62,6 +64,7 @@ AppName::Application.routes.draw do
   resources :todo_lists do
     resources :todo_items, :controller => 'todo_lists/todo_items' do
       put :complete, :on => :member
+      
     end
   end
 
