@@ -3,6 +3,7 @@ source 'http://rubygems.org'
 gem 'rails', '3.0.0.rc'
 
 gem 'sqlite3-ruby', :require => 'sqlite3'
+gem 'pg', :require => 'pg'
 gem 'ruby_parser'
 gem 'hpricot'
 gem "haml", ">=3.0.14"
@@ -31,5 +32,4 @@ gem 'delorean'
 gem 'database_cleaner'
 
 gem 'mongrel'
-
 

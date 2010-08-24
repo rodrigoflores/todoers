@@ -60,12 +60,16 @@ describe Users::TodoListsController do
         let(:user) { @user }
         it_should_behave_like 'showing a list with an access granted'
         
-        describe 'watch' do
+        describe 'watch_todo_list' do
           it 'should add the list to the watch list' do
             lambda { 
               put :watch_todo_list, :user_id => @user.id, :id => @public_list.id
             }.should change(@another_user.watched_lists, :count).by(1)
-            
+          end
+          
+          it 'should render nothing' do
+            put :watch_todo_list, :user_id => @user.id, :id => @public_list.id
+            response.body.should == " "
           end
         end
       end

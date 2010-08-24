@@ -5,7 +5,7 @@ describe TodoListsController do
     @user = Factory(:user)
     @todo_list = Factory(:todo_list, :user => @user)
     @another_user = Factory(:user, :email => 'a@bbb.com')
-    @another_todo_list = Factory(:todo_list, :user => @another_user)
+    @another_todo_list = Factory(:todo_list, :user => @another_user, :public => true )
   end
   
   describe "not authenticated" do
@@ -32,7 +32,7 @@ describe TodoListsController do
         get :show, :id => @another_todo_list.id
       end
       
-      xit 'should render index' do
+      it 'should render index' do
         should redirect_to root_path
       end
     end
@@ -177,6 +177,27 @@ describe TodoListsController do
         lambda { 
           delete_it          
         }.should change(@user.todo_lists,:count).by(-1)
+      end
+    end
+    
+    describe "unwatch todo_list" do
+      def unwatch_it(id)
+        delete :unwatch_todo_list, :id => id
+      end
+
+      before(:each) do
+        @user.watched_lists << @another_todo_list        
+      end
+      
+      it 'should decrement by 1 the watched_lists_count' do
+        lambda {
+          unwatch_it(@another_todo_list.id)
+        }.should change(@user.watched_lists, :count).by(-1)      
+      end
+      
+      it 'should render nothing' do
+        unwatch_it(@another_todo_list.id)
+        response.body.should == " "
       end
     end
   end
