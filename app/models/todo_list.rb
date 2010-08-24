@@ -11,5 +11,7 @@ class TodoList < ActiveRecord::Base
     user == self.user || self.public?
   end
   
+
+  
   scope :public,  where( :public => true)
 end

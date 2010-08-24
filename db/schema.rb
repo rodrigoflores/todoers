@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(:version => 20100823223826) do
   create_table "todo_lists", :force => true do |t|
     t.string   "name"
     t.text     "description"
-    t.date     "deadline"
+    t.datetime "deadline"
     t.integer  "user_id"
     t.boolean  "public",      :default => false
     t.datetime "created_at"

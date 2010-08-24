@@ -1,4 +1,14 @@
 
+%h3 You are Watching
+  
+%table  
+  - @watched_lists.each do |list|
+    %tr
+      %td= link_to list.name, user_todo_list_path(list.user, list)
+      %td= link_to "Unwatch", unwatch_todo_list_todo_list_path(list), :method => 'delete', :class => "unwatch_link"
+
+
+%h3 To-do lists created by you
 
 %table
   %tr
