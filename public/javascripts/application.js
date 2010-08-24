@@ -1,4 +1,38 @@
 var Application = {
+  unwatch_todo_list: {
+    init: function() {
+      $(".unwatch_link").click( function () {
+        link = $(this);
+        $.ajax({
+          url: link.attr('href'),
+          type: 'DELETE',
+          dataType: 'script',
+          success: function(){
+            tr = link.parent().parent();  
+            tr.slideUp();
+          }});
+        return false; 
+      });
+    }
+  },
+  watch_todo_list: {
+    init: function() {
+      $("#list_watch").click( function () {
+        link = $(this);
+        $.ajax({
+          url: link.attr('href'),
+          type: 'PUT',
+          dataType: 'script',
+          success: function(){
+            link.fadeOut();
+            $("#watch_paragraph").html("You are now watching this list");
+          } 
+        });
+        return false;
+      });
+    }
+    
+  },
   add_to_do_item: {
     init: function() {
       $("#new_to_do_link").click( function (){
@@ -87,6 +121,8 @@ var Application = {
 
 
 $(document).ready(function() {
+  Application.unwatch_todo_list.init();
+  Application.watch_todo_list.init();
   Application.add_to_do_item.init();
   Application.remove_to_do_item.init();
   Application.destroy_todo_item.destroy();
