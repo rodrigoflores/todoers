@@ -32,4 +32,3 @@ gem 'database_cleaner'
 
 gem 'mongrel'
 
-
