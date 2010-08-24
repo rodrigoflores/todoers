@@ -64,13 +64,17 @@ var Application = {
           type: 'post',
           dataType: 'json',
           data: form.serialize(),
-          success: function(response) {
-            var json = jQuery.parseJSON(response.responseText);
-            alert(json.todo_item.id);
+          async:false,
+          success: function(data) {
+            todo_item = data.todo_item
+            table_tbody = $('table#todo_items tbody');
+            table_tbody.prepend("<tr><td>" + todo_item.description + "</td><td>" + todo_item.deadline + "</td><td>" + todo_item.done + "</td><td><a href='/todo_lists/" + todo_item.todo_list_id+ "/todo_items/" + todo_item.id + "/complete' class='complete_todo_item'>Complete</a>" +  
+             "</td><td><a href='/todo_lists/" + todo_item.todo_list_id + "/todo_items/" + todo_item.id+ "' class='destroy_todo_item'>Delete</a></td></tr>" );
+
           },
-          error: function(response) {
-            alert("Erro");
-          }
+          // error: function(response) {
+          //   alert("Erro");
+          // }
             
           });
         return false;

@@ -6,7 +6,7 @@ class TodoLists::TodoItemsController < InheritedResources::Base
   def create
     create! do |success, failure|
       success.json do 
-        render :nothing => true 
+        render :json => resource
       end
       failure.json do 
         render :json => resource.error_hash , :status => 406
