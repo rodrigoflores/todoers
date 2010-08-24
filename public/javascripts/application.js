@@ -67,10 +67,22 @@ var Application = {
           async:false,
           success: function(data) {
             todo_item = data.todo_item
-            table_tbody = $('table#todo_items tbody');
-            table_tbody.prepend("<tr><td>" + todo_item.description + "</td><td>" + todo_item.deadline + "</td><td>" + todo_item.done + "</td><td><a href='/todo_lists/" + todo_item.todo_list_id+ "/todo_items/" + todo_item.id + "/complete' class='complete_todo_item'>Complete</a>" +  
-             "</td><td><a href='/todo_lists/" + todo_item.todo_list_id + "/todo_items/" + todo_item.id+ "' class='destroy_todo_item'>Delete</a></td></tr>" );
-
+						table_tbody = $('table#todo_items tbody');
+						tr_id = 'todo-item-' + todo_item.id;
+						table_tbody.append($("<tr></tr>").attr('id',tr_id))
+						tr = $("#"+tr_id);
+						tr.append($("<td>" + todo_item.description + "</td>"));
+						tr.append($("<td>" + todo_item.deadline + "</td>"));
+						if(todo_item.done) {
+							tr.append($("<td>Yes</td>"));
+							tr.append($("<td></td>"));
+						}
+						else
+						{
+							tr.append($("<td>No</td>"));
+							tr.append($("<td></td>").append($("<a>Complete</a>").addClass("complete_link").attr('href','/todo_lists/' + todo_item.todo_list_id+ '/todo_items/'+ todo_item.id+ '/complete').addClass("complete_todo_item")) );
+						}
+						tr.append($("<td></td>").append($("<a>Delete</a>").attr('href','/todo_lists/' + todo_item.todo_list_id+ '/todo_items/'+ todo_item.id).addClass("destroy_todo_item")) );
           },
           // error: function(response) {
           //   alert("Erro");
