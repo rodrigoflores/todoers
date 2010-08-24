@@ -37,4 +37,45 @@ describe User do
     should_have_many :todo_lists
   end
   
+  describe 'watched lists' do
+    before(:each) do
+      @user = Factory(:user)
+      @another_user = Factory(:user, :email => 'otheremail@abcd.com.br')
+      @list = Factory(:todo_list, :public => true, :user => @another_user)
+      @private_list = Factory(:todo_list, :public => false, :user => @another_user)
+    end
+    
+    it 'should add a public list' do
+      @user.watched_lists << @list
+      @user.watched_lists.count.should == 1
+    end
+    
+    it 'should not add the same list twice' do
+      2.times do 
+        @user.watched_lists << @list
+      end
+      @user.watched_lists.count.should == 1
+
+    end
+    
+    it 'should not add a private list' do
+      @user.watched_lists << @private_list
+      @user.watched_lists.count.should == 0
+    end
+    
+    describe 'delete_watched_list' do
+      before(:each) do
+        @user.watched_lists << @list
+      end
+      
+      it 'should delete the list' do
+        lambda {
+          @user.delete_watched_list(@list.id)
+        }.should change(@user.watched_lists, :count).by(-1)
+        
+      end
+
+    end
+  end
+  
 end

@@ -24,7 +24,7 @@ class User < ActiveRecord::Base
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
-  has_and_belongs_to_many :watched_lists, :join_table => "watching_list_users", :class_name => 'TodoList', :uniq => true
+  has_and_belongs_to_many :watched_lists, :join_table => "watching_list_users", :class_name => 'TodoList', :uniq => true, :conditions => { :public => true}
   
   mount_uploader :photo, PhotoUploader
          
