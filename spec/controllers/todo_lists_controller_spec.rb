@@ -32,7 +32,7 @@ describe TodoListsController do
         get :show, :id => @another_todo_list.id
       end
       
-      xit 'should render index' do
+      it 'should render index' do
         should redirect_to root_path
       end
     end

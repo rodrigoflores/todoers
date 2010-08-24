@@ -73,8 +73,7 @@ describe TodoLists::TodoItemsController do
       
         it 'should return a json with the errors' do
           post_it(Factory.attributes_for(:todo_item, :description => ''))
-          pending
-          response.body.should == "[{\"description\":\"can't be blank\",\"field\":\"description\"}]"
+          response.body.should == "[{\"field\":\"description\",\"description\":\"can't be blank\"}]"
         end
       end
       

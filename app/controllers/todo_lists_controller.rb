@@ -9,6 +9,14 @@ class TodoListsController < InheritedResources::Base
     end
   end
   
+  def show
+    begin
+      show!
+    rescue ActiveRecord::RecordNotFound
+      redirect_to root_path
+    end
+  end
+  
   def unwatch_todo_list
     current_user.delete_watched_list(params[:id])
     render :nothing => true 

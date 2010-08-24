@@ -8,7 +8,7 @@ class TodoLists::TodoItemsController < InheritedResources::Base
       success.json do 
         render :nothing => true 
       end
-      failure.json do |format|
+      failure.json do 
         render :json => resource.error_hash , :status => 406
       end
     end
