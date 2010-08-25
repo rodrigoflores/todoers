@@ -17,7 +17,7 @@
 
 
 %ul
-  - @user.todo_lists.each do |todo_list|
+  - @todo_lists.public.each do |todo_list|
     %li= link_to todo_list.name, user_todo_list_path(@user,todo_list)
   
 
