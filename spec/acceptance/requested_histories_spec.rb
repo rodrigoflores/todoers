@@ -44,7 +44,9 @@ feature "Requested histories", %q{
     access_a_todo_list
     page.should have_content("Watch this list")  
     click_link("Watch this list")
-    pending "Javascript issue"
+    page.should_not have_content("Watch this list") 
+    pending "Javascript issue" 
+    page.should_not have_content("Watching")  
     visit '/todo_lists'
     page.should have_content('my public list')
     log_out

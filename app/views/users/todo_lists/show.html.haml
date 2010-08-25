@@ -7,7 +7,7 @@
   
 - if current_user
   - unless current_user.watched_lists.exists?(@todo_list)
-    %p#watch_paragraph= link_to "Watch this list",  watch_todo_list_user_todo_list_path(@todo_list.user, @todo_list, :format => 'js'), :id => "list_watch"
+    %p#watch_paragraph= link_to "Watch this list",  watch_todo_list_user_todo_list_path(@todo_list.user, @todo_list), :id => "list_watch"
   - else
     %p You are already watching this list.
   
