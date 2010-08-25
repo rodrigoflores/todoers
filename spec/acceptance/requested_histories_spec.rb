@@ -41,6 +41,7 @@ feature "Requested histories", %q{
   
   @javascript
   scenario 'watch other users lists and see it on my profile page' do
+    pending
     access_a_todo_list
     page.should have_content("Watch this list")  
     click_link("Watch this list")
