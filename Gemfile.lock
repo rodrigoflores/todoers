@@ -104,6 +104,7 @@ GEM
       daemons (>= 1.0.3)
       fastthread (>= 1.0.1)
       gem_plugin (>= 0.2.3)
+    mysql (2.8.1)
     nifty-generators (0.4.0)
     nokogiri (1.4.3.1)
     polyglot (0.3.1)
@@ -189,6 +190,7 @@ DEPENDENCIES
   inploy
   jammit
   mongrel
+  mysql
   nifty-generators
   rails (= 3.0.0.rc)
   rails3-generators!
