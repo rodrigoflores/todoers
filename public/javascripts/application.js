@@ -1,6 +1,6 @@
 var Application = {
-  unwatch_todo_list: {
-    init: function() {
+  todo_list_watch_actions: {
+    unwatch: function() {
       $(".unwatch_link").click( function () {
         link = $(this);
         $.ajax({
@@ -13,10 +13,8 @@ var Application = {
           }});
         return false; 
       });
-    }
-  },
-  watch_todo_list: {
-    init: function() {
+    },
+    watch: function() {
       $("#list_watch").click( function () {
         link = $(this);
         $.ajax({
@@ -31,20 +29,17 @@ var Application = {
         return false;
       });
     }
-    
-  },
-  add_to_do_item: {
-    init: function() {
+  }, 
+  todo_item_crud_like: {
+    append_one: function() {
       $("#new_to_do_link").click( function (){
         fields = $("tr.inactive:first");
         fields.fadeIn();
         fields.removeClass('inactive');
         return false;
       }); 
-    }
-  },
-  remove_to_do_item: {
-    init: function(form) {
+    },
+    unappend_one: function(form) {
       $(".close_this_todo_item").click( function (){
         tr = $(this).parent().parent();
         tr.fadeOut();
@@ -53,10 +48,8 @@ var Application = {
 	      tr.find("checkbox").val("");
         return false;
       });
-    }
-  },
-  submit_todo_item: {
-    submit: function() {
+    },
+    create: function() {
       $("#new_todo_item_form").submit( function (){
         var form = $(this);        
         $.ajax({
@@ -91,10 +84,7 @@ var Application = {
           });
         return false;
       });
-      
-    }
-  },
-  complete_todo_item: {
+    },
     complete: function() {
       $(".complete_todo_item").click( function ( ){
         link = $(this);
@@ -112,9 +102,7 @@ var Application = {
         });
         return false;
       });
-    }
-  },
-  destroy_todo_item: {
+    },
     destroy: function() {
       $(".destroy_todo_item").click( function ( ){
         link = $(this);
@@ -132,17 +120,16 @@ var Application = {
       });
     }
   }
-};
-
+}
 
 
 $(document).ready(function() {
-  Application.unwatch_todo_list.init();
-  Application.watch_todo_list.init();
-  Application.add_to_do_item.init();
-  Application.remove_to_do_item.init();
-  Application.destroy_todo_item.destroy();
-  Application.complete_todo_item.complete();
-  Application.submit_todo_item.submit();
+  Application.todo_list_watch_actions.unwatch();
+  Application.todo_list_watch_actions.watch();
+  Application.todo_item_crud_like.append_one();
+  Application.todo_item_crud_like.unappend_one();
+  Application.todo_item_crud_like.create();
+  Application.todo_item_crud_like.complete();
+  Application.todo_item_crud_like.destroy();
 });
 
