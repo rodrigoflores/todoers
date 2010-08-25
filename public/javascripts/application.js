@@ -66,7 +66,14 @@ var Application = {
 						table_tbody.append($("<tr></tr>").attr('id',tr_id))
 						tr = $("#"+tr_id);
 						tr.append($("<td>" + todo_item.description + "</td>"));
-						tr.append($("<td>" + todo_item.deadline + "</td>"));
+						if(!todo_item.deadline) {
+							tr.append($("<td></td>"));
+						}
+						else
+						{
+							tr.append($("<td>" + todo_item.deadline + "</td>"));
+						}
+						
 						if(todo_item.done) {
 							tr.append($("<td>Yes</td>"));
 							tr.append($("<td></td>"));
@@ -78,6 +85,10 @@ var Application = {
 							   tr.append($("<td></td>").append($("<a>Complete</a>").addClass("complete_link").attr('href','/todo_lists/' + todo_item.todo_list_id+ '/todo_items/'+ todo_item.id+ '/complete').addClass("complete_todo_item")) );
 						}
 						tr.append($("<td></td>").append($("<a>Delete</a>").attr('href','/todo_lists/' + todo_item.todo_list_id+ '/todo_items/'+ todo_item.id).addClass("destroy_todo_item")) );
+						
+						//As we added new stuff, we have to re run somethings
+						Application.todo_item_crud_like.complete();
+					  Application.todo_item_crud_like.destroy();
           },
           error: function(response) {
             $('#errors').html("");
