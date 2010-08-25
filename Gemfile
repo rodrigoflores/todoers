@@ -2,8 +2,11 @@ source 'http://rubygems.org'
 
 gem 'rails', '3.0.0.rc'
 
-gem 'sqlite3-ruby', :require => 'sqlite3'
-gem 'pg', :require => 'pg'
+group :development do
+  gem 'sqlite3-ruby', :require => 'sqlite3'
+end
+
+gem 'mysql'
 gem 'ruby_parser'
 gem 'hpricot'
 gem "haml", ">=3.0.14"

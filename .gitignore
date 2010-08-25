@@ -13,3 +13,5 @@ public/system/*
 ruby/*
 public/uploads/*
 capybara-*
+config/database.yml
+db/schema.rb

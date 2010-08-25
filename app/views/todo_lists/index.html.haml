@@ -6,7 +6,10 @@
     %tr
       %td= link_to list.name, user_todo_list_path(list.user, list)
       %td= link_to "Unwatch", unwatch_todo_list_todo_list_path(list), :method => 'delete', :class => "unwatch_link"
+      
 
+
+%p= link_to 'New todo-list', new_todo_list_path
 
 %h3 To-do lists created by you
 

@@ -2,29 +2,37 @@
 %h2{:id => 'todo_list_title'}= @todo_list.name
 
 
+
+%p
+%ul#errors
+  
 - simple_form_for :todo_item, :url => todo_list_todo_items_path(@todo_list), :html => { :id => "new_todo_item_form"} do |form|
-  = form.input :description, :required => false
-  = form.input :deadline, :required => false
-  = form.input :done, :required => false
-  = form.submit
+  %table
+    %tr
+      %td= form.input :description, :required => false, :input_html => { :size => 40}
+      %td= form.input :deadline, :required => false, :input_html => { :size => 10}
+      %td= form.input :done, :required => false, :as => :boolean
+  = form.submit "Create todo-item"
   
 
 %table#todo_items
-  %tr
-    %th
-      Description
-    %th
-      Deadline
-    %th
-      Status
-  - @todo_list.todo_items.each do |item|
-    %tr{ :id => "todo-item-#{item.id}"}
-      %td= item.description 
-      %td= item.deadline
-      %td.status= item.done? ? "Yes" : "No"
-      - unless item.done?
-        %td.complete_link= link_to "Complete", complete_todo_list_todo_item_path(@todo_list, item), :class => 'complete_todo_item'
-      - else
-        %td.complete_link
-      %td= link_to "Delete", todo_list_todo_item_path(@todo_list, item), :class => 'destroy_todo_item'
+  %thead
+    %tr
+      %th
+        Description
+      %th
+        Deadline
+      %th
+        Status
+  %tbody
+    - @todo_list.todo_items.each do |item|
+      %tr{ :id => "todo-item-#{item.id}"}
+        %td= item.description 
+        %td= item.deadline
+        %td.status= item.done? ? "Yes" : "No"
+        - unless item.done?
+          %td.complete_link= link_to "Complete", complete_todo_list_todo_item_path(@todo_list, item), :class => 'complete_todo_item'
+        - else
+          %td.complete_link
+        %td= link_to "Delete", todo_list_todo_item_path(@todo_list, item), :class => 'destroy_todo_item'
       

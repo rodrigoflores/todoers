@@ -9,7 +9,7 @@
     %meta{ :name => "copyright", :content => "Rodrigo Flores" }
     %title= yield(:title) || "Untitled" 
     = include_stylesheets :base
-    / = csrf_meta_tag 
+    = csrf_meta_tag 
     = yield(:head) 
   %body
     #container
