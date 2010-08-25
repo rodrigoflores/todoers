@@ -1,17 +1,17 @@
 
-%h3 You are Watching
+%h2 You are Watching
   
 %table  
-  - @watched_lists.each do |list|
+  - @watched_lists.each do |watched_list|
     %tr
-      %td= link_to list.name, user_todo_list_path(list.user, list)
-      %td= link_to "Unwatch", unwatch_todo_list_todo_list_path(list), :method => 'delete', :class => "unwatch_link"
+      %td= link_to watched_list.name, user_todo_list_path(watched_list.user_id, watched_list.id)
+      %td= link_to "Unwatch", unwatch_todo_list_todo_list_path(watched_list), :method => 'delete', :class => "unwatch_link"
       
 
 
 %p= link_to 'New todo-list', new_todo_list_path
 
-%h3 To-do lists created by you
+%h2 To-do lists created by you
 
 %table
   %tr
