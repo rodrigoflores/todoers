@@ -7,7 +7,7 @@
     %meta{ :name => "distribution", :content => "global" }
     %meta{ :name => "revisit-after", :content => "30 days" }
     %meta{ :name => "copyright", :content => "Rodrigo Flores" }
-    %title= yield(:title) || "Untitled" 
+    %title Todoers
     = include_stylesheets :base
     = csrf_meta_tag 
     = yield(:head) 
