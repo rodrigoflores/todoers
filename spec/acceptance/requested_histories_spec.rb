@@ -39,14 +39,13 @@ feature "Requested histories", %q{
     log_out
   end
   
+  @javascript
   scenario 'watch other users lists and see it on my profile page' do
-    
     access_a_todo_list
     page.should have_content("Watch this list")  
     click_link("Watch this list")
     page.should_not have_content("Watch this list") 
-    pending "Javascript issue" 
-    page.should_not have_content("Watching")  
+    page.should have_content("watching")  
     visit '/todo_lists'
     page.should have_content('my public list')
     log_out
