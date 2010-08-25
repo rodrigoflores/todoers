@@ -57,8 +57,9 @@ var Application = {
           type: 'post',
           dataType: 'json',
           data: form.serialize(),
-          async:false,
+          // async:false,
           success: function(data) {
+            
             todo_item = data.todo_item
 						table_tbody = $('table#todo_items tbody');
 						tr_id = 'todo-item-' + todo_item.id;
@@ -72,16 +73,21 @@ var Application = {
 						}
 						else
 						{
+						  $('#errors').html("");
 							tr.append($("<td>No</td>"));
-							tr.append($("<td></td>").append($("<a>Complete</a>").addClass("complete_link").attr('href','/todo_lists/' + todo_item.todo_list_id+ '/todo_items/'+ todo_item.id+ '/complete').addClass("complete_todo_item")) );
+							   tr.append($("<td></td>").append($("<a>Complete</a>").addClass("complete_link").attr('href','/todo_lists/' + todo_item.todo_list_id+ '/todo_items/'+ todo_item.id+ '/complete').addClass("complete_todo_item")) );
 						}
 						tr.append($("<td></td>").append($("<a>Delete</a>").attr('href','/todo_lists/' + todo_item.todo_list_id+ '/todo_items/'+ todo_item.id).addClass("destroy_todo_item")) );
           },
-          // error: function(response) {
-          //   alert("Erro");
-          // }
+          error: function(response) {
+            $('#errors').html("");
+            errors = jQuery.parseJSON(response.responseText);
+            $.each(errors, function(index,value){
+   $('#errors').css('display','none').append($("<li></li>").append(value.field + " " + value.description)).fadeIn();
+            });
+          }
             
-          });
+        });
         return false;
       });
     },

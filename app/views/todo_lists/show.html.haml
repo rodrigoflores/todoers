@@ -2,6 +2,10 @@
 %h2{:id => 'todo_list_title'}= @todo_list.name
 
 
+
+%p
+%ul#errors
+  
 - simple_form_for :todo_item, :url => todo_list_todo_items_path(@todo_list), :html => { :id => "new_todo_item_form"} do |form|
   %table
     %tr
