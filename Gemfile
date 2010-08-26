@@ -6,6 +6,7 @@ group :development do
   gem 'sqlite3-ruby', :require => 'sqlite3'
 end
 
+
 gem 'mysql'
 gem 'ruby_parser'
 gem 'hpricot'
@@ -21,18 +22,19 @@ gem "rails3-generators", :git => "git://github.com/indirect/rails3-generators.gi
 gem "nifty-generators"
 gem "friendly_id", "~> 3.1"
 
-
-gem "rspec", ">=2.0.0.beta.19"
-gem "remarkable", ">=4.0.0.alpha4"
-gem "remarkable_activemodel", ">=4.0.0.alpha4"
-gem "remarkable_activerecord", ">=4.0.0.alpha4"
-gem "factory_girl_rails"
-gem "capybara"
-gem 'rspec-rails', '>= 2.0.0.beta.19'
-gem 'steak', :git => 'git://github.com/cavalle/steak.git'
-gem 'capybara'
-gem 'delorean'
-gem 'database_cleaner'
+group :test do
+  gem "rspec", ">=2.0.0.beta.19"
+  gem "remarkable", ">=4.0.0.alpha4"
+  gem "remarkable_activemodel", ">=4.0.0.alpha4"
+  gem "remarkable_activerecord", ">=4.0.0.alpha4"
+  gem "factory_girl_rails"
+  gem "capybara"
+  gem 'rspec-rails', '>= 2.0.0.beta.19'
+  gem 'steak', :git => 'git://github.com/cavalle/steak.git'
+  gem 'capybara'
+  gem 'delorean'
+  gem 'database_cleaner'
+end
 
 gem 'mongrel'
 
