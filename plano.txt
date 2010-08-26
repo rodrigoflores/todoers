@@ -1,3 +1,0 @@
-- Fazer criação de lista
-- Fazer Nested de itens
-- Fazer "watch"
