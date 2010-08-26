@@ -29,7 +29,6 @@ class TodoListsController < InheritedResources::Base
     
     def collection
       @watched_lists = current_user.watched_lists
-      
       @todo_lists = end_of_association_chain
     end
 end
