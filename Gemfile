@@ -34,6 +34,8 @@ group :test do
   gem 'capybara'
   gem 'delorean'
   gem 'database_cleaner'
+  gem 'Selenium'
+  gem 'selenium-client'
 end
 
 gem 'mongrel'

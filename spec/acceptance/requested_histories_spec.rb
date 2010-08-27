@@ -41,7 +41,8 @@ feature "Requested histories", %q{
   
   @javascript
   scenario 'watch other users lists and see it on my profile page' do
-    pending
+    Capybara.current_driver = :selenium
+    log_in(@user,'abcdef')
     access_a_todo_list
     page.should have_content("Watch this list")  
     click_link("Watch this list")
@@ -50,5 +51,6 @@ feature "Requested histories", %q{
     visit '/todo_lists'
     page.should have_content('my public list')
     log_out
+    Capybara.use_default_driver
   end
 end

@@ -7,10 +7,13 @@ RSpec.configuration.include Capybara, :type => :acceptance
 # Put your acceptance spec helpers inside /spec/acceptance/support
 Dir["#{File.dirname(__FILE__)}/support/**/*.rb"].each {|f| require f}
 
-RSpec.configure do |config|
+DatabaseCleaner.strategy = :truncation
 
+RSpec.configure do |config|
+  config.use_transactional_fixtures = false
   config.before(:each, :type => :acceptance) do
-    # Some code to run before any acceptance spec
+    Capybara.reset_sessions!
+    DatabaseCleaner.clean  
   end
 end
 
