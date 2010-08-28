@@ -36,7 +36,10 @@ group :test do
   gem 'database_cleaner'
   gem 'Selenium'
   gem 'selenium-client'
+  gem 'metric_fu'
 end
 
-gem 'mongrel'
+group :development do
+  gem 'mongrel'
+end
 

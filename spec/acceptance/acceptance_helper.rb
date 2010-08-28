@@ -15,5 +15,9 @@ RSpec.configure do |config|
     Capybara.reset_sessions!
     DatabaseCleaner.clean  
   end
+  
+  config.after(:all, :type => :acceptance) do
+    DatabaseCleaner.clean  
+  end
 end
 
